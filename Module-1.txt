@@ -1,0 +1,14 @@
+#Pull stocks into one workbook
+
+Sub GetSheets()
+Path = "C:\Users\phreh\OneDrive\Desktop\CWRU Data Analytics Boot Camp\CWRUCLE201904DATA4\ETLproject\nasdaq_stockdata\"
+Filename = Dir(Path & "*.csv")
+Do While Filename <> ""
+Workbooks.Open Filename:=Path & Filename, ReadOnly:=True
+For Each Sheet In ActiveWorkbook.Sheets
+Sheet.Copy After:=ThisWorkbook.Sheets(1)
+Next Sheet
+Workbooks(Filename).Close
+Filename = Dir()
+Loop
+End Sub
