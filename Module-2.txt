@@ -1,0 +1,16 @@
+#Add column to each worksheet and add tab name to entire column
+
+Sub columns()
+Dim WS As Worksheet
+Dim LastRow As Long
+For Each WS In Sheets
+With WS
+LastRow = .Range("A" & Rows.Count).End(xlUp).Row
+.columns(1).Insert
+.Range("A2:A" & LastRow) = WS.Name
+.Cells(1, 1).Value = "Ticker"
+End With
+Next WS
+MsgBox ("Fixes Complete")
+End Sub
+
