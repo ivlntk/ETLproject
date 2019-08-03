@@ -1,0 +1,5 @@
+#Merge all csv files into one csv file
+
+C:\Users\phreh>cd "C:\Users\phreh\OneDrive\Desktop\CWRU Data Analytics Boot Camp\CWRUCLE201904DATA4\ETLproject\nasdaq_stockdata\Merged\csv files"
+
+C:\Users\phreh\OneDrive\Desktop\CWRU Data Analytics Boot Camp\CWRUCLE201904DATA4\ETLproject\nasdaq_stockdata\Merged\csv files>copy *.csv combined-csv-files.csv
