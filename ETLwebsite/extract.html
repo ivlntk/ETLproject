@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Extract</title>
+  </head>
+  <body>
+    <h1>
+        <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+              <a class="nav-link" href="homepage.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Extract</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="transform.html">Transform</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="load.html">Load</a>
+            </li>
+        </ul>
+        <div class="card text-center">
+            <div class="p-3 mb-2 bg-primary text-white">
+                Our original data sources and how the data was formatted.
+              </div>
+    </h1>
+    <h2>
+            <div class="card-deck">
+                    <div class="card">
+                      <img src="ctgov.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Original Clinical Trial Data</h5>
+                        <p class="card-text">Source:  ClinicalTrials.gov is a database of privately and publicly funded clinical studies conducted around the world.  Created and maintained by the US National Institues of Health, Department of Health and Human Services, US National Library of Medicine.</p>
+
+                        <p class="text-left">Description:  Queried the database for clinical trials that were completed and had results.  The result was 10,000+ records saved to a .csv file.</p>
+
+                        <p class="text-left">
+                            Fields:
+                                Rank (row number),
+                                Title,
+                                Status: complete,
+                                Study Results: has results,
+                                Conditions,
+                                Interventions,
+                                Sponsor/Collaborators,
+                                Phases,
+                                Funded Bys,
+                                Study Type: Interventional (i.e., clinical trial),
+                                Results First Posted,
+                                URL: a unique identifier for each trial.</p>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="nasdaq-logo.png" class="" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Original Company Data</h5>
+                        <p class="card-text">Source:  Nasdaq.com</p>
+                        <p class="text-left">Description:  Companies traded on the NASDAQ exchange with Health Care sector or subsector designation.  The result was 908 records saved to a .csv file.</p>
+
+                        <p class="text-left">Fields:
+                            Symbol,
+                            Name,
+                            Market Cap,
+                            ADR TSO,
+                            IPO Year,
+                            Sector: Health Care,
+                            Industry,
+                            Summary Quote.</p>
+                      </div>
+                    </div>
+                    <div class="card">
+                        <img src="yahoo.png" class="" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Original Stock Market Data</h5>
+                          <p class="card-text">Source: Yahoo Finance</p>
+                          <p class="text-left">Description: Ten years of daily stock trading data for each company in the Company Data list.  The extraction process used a Jupyter Notebook, Pandas, Pandas_datareader, datetime, and os. The result was 908 .csv files.</p>
+                          <p class="text-left">
+                              Fields:
+                                  Symbol,
+                                  Date: between 1/1/2009 and 'today',
+                                  High,
+                                  Low,
+                                  Open,
+                                  Close,
+                                  Volume,
+                                  Adj Close.</p>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="card" style="width: 100%;">
+                        <div class="card-body">
+                          <a href="transform.html" class="card-link">
+                              <p class="text-center">NEXT: TRANSFORM</p>
+                          </a>
+                        </div>
+                      </div>
+    </h2>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
