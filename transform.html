@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Transform</title>
+  </head>
+  <body>
+    <h1>
+        <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+              <a class="nav-link" href="homepage.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="extract.html">Extract</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Transform</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="load.html">Load</a>
+            </li>
+          </ul>
+          <div class="card text-center">
+                <div class="p-3 mb-2 bg-primary text-white">
+                Our data cleaning and transformation.
+              </div>
+    </h1>
+    <h2>
+      <div class="card">
+        <div class="card-body">
+            <p class="text-center">Each data source presented uniuqe challenges to transform it for the Load process.</p>
+        </div>
+      </div>
+      <div class="card-columns">
+          <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Clinical Trial Data to Clinical_Trials table</h5>
+                <p class="card-text">Description: Used Pandas and a Jupyter Notebook to put .csv file into a dataframe for processing.</p>
+                
+              </div>
+              <img src="TransformCard1.png" class="card-img-top" alt="...">
+            </div>
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Company Data to Company_ID_names table</h5>
+                  <p class="card-text">Description: Used Pandas and a Jupyter Notebook to put .csv file into a dataframe for processing.</p>
+                  
+                </div>
+                <img src="TransformCard2.png" class="card-img-top" alt="...">
+              </div>
+              <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Stock Marcket Data to Stock_prices table</h5>
+                    <p class="card-text">Description: Used Pandas DataReader, Jupyter Notebook and Yahoo! Finance to create .csv files for each company in the health care industry on the Nasdaq. 
+                      Used VBA scripts to throw all .csv files into one Excel Workbook with each stock being on its own tab.  
+                      Each tab was labeled with their respective ticker symbol; therefore, we ran another VBA script to create a column in each worksheet with the ticker symbol.  
+                      Ran one last VBA script to save each stock as its own .csv file and then ran a command prompt to merge all .csv files into one large .csv file.</p>
+                    
+                  </div>
+                  <img src="Transformcard3NEW.png" class="card-img-top" alt="...">
+                </div>
+      </div>
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <a href="load.html" class="card-link">
+              <p class="text-center">NEXT: LOAD</p>
+          </a>
+        </div>
+      </div>
+    </h2>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
