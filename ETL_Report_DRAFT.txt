@@ -1,0 +1,180 @@
+Summary
+
+Clinical trials are used to test the safety and efficacy of drugs and medical devices.  Typically a clinical trial has four phases:  Phase one: generally healthy people are given a medication or intervention to determine if there are any adverse or toxic effects; Phase two and three: look more closely at safety and effectiveness while honing in on route of administration, dosage, and frequency (after phase three is when the FDA would approve a drug or device); and Phase four: examines new uses for previously approved treatments.
+
+Every year the biopharmaceutical industry spends billions of dollars to sponsor thousands of clinical trials involving over a million patients across the US.  In a capitalist system an investment of this magnitude must result in tangible returns for the companies sponsoring the process.  Much of that return on investment occurs when a drug or device goes to market, but how much value does a Phase 3 clinical trial bring to their sponsors?
+
+The goal of this project is to create a dataset that can be analyzed for insights in to some of these questions:  
+Are clinical trials profitable?  What companies have paid for clinical trials?  How does the completion of a clinical trial effect the sponsoring company's stock price (value) in the following weeks?  Should the type of clinical trial be considered during analysis?
+
+
+EXTRACT
+
+Clinical Trial Data
+
+Source:  ClinicalTrials.gov is a database of privately and publicly funded clinical studies conducted around the world.  Created and maintained by the US National Institues of Health, Department of Health and Human Services, US National Library of Medicine.
+
+Description:  Queried the database for clinical trials that were completed and had results.  The result was 10,000+ records saved to a .csv file.
+
+Fields:
+	Rank (row number)
+	Title
+	Status: complete
+	Study Results: has results
+	Conditions
+	Interventions
+	Sponsor/Collaborators
+	Phases
+	Funded Bys
+	Study Type: Interventional (i.e., clinical trial)
+	Results First Posted
+	URL: a unique identifier for each trial
+
+Company Data
+
+Source:  TD Ameritrade?? 
+
+Description:  Companies traded on the NASDAQ exchange with Health Care sector designation.  The result was 909 records saved to a .csv file.
+
+Fields:
+	Symbol
+	Name
+	Market Cap
+	ADR TSO
+	IPO Year
+	Sector: Health Care
+	Industry
+	Summary Quote
+
+Stock Market Data
+
+Source: Yahoo Finance
+
+Description: Ten years of daily stock trading data for each company in the Company Data list.  The extraction process used a Jupyter Notebook, Pandas, Pandas_datareader, datetime, and os.  
+
+	def get_stock_data():
+    	tickers = [
+	'YI',
+	'MMM',
+	'AAC',
+	'ABT',
+	'ABBV',
+	'ABEO',
+	...
+
+	start = dt.datetime(2009,1,1)
+    	end = dt.datetime.today()
+    
+   	if not os.path.exists('nasdaq_stockdata'):
+        		os.makedirs('nasdaq_stockdata')
+    
+    	for ticker in tickers:
+        		print(ticker)
+        		try:
+            			df = web.DataReader(ticker, 'yahoo', start, end)
+            			print(df.head())
+            			df.to_csv('nasdaq_stockdata/{}.csv'.format(ticker))
+            			print(ticker, 'downloaded')
+        		except Exception as e:
+            			print(e, 'error')
+
+The result was 909 .csv files. ?? 
+
+Fields:
+	Symbol
+	Date: between 1/1/2009 and 'today'
+	High
+	Low
+	Open
+	Close
+	Volume
+	Adj Close
+
+
+TRANSFORM
+
+Each data source presented uniuqe challenges to transform it for the Load process.
+
+Clinical Trial Data to Clinical_Trials table
+
+Description: Used Pandas and a Jupyter Notebook to put .csv file into a dataframe for processing.
+
+Filters:
+	Phases: Phase 2|3 and Phase 3
+	Results First Posted: Between 2009 and 'today'
+
+Fields Dropped:
+	Rank/Row	
+	Status: complete
+	Study Results: has results
+	Funded Bys
+	Phases
+
+Transformed:
+	URL to CTID: strip off all but the last 11 characters
+	Sponsor/Collaborators to Company: parsed names then matched each to Company.Name or null
+	Used Company.Name to split each trial into one row per Company and Intervention
+	
+Fields Added:
+	Company_ticker from Company
+
+Fields in Clinical_trials table:
+	CTID: primary key
+	Company_ticker	
+	Title
+	CT_results_posted_date
+	Disease Condition
+	Intervention
+	Study_type
+	
+
+Company Data to Company_ID_names table
+
+Filters:
+	Sector: Health Care
+
+Fields Dropped:
+	ADR TSO
+	Sector
+	Summary Quote
+
+Transformed:
+	Symbol to Company_ticker: renamed field
+	Name to Company_name: renamed field
+
+Fields Added:
+	None
+
+Fields in Company_ID_names table:
+	Company_ticker: primary key
+	Company_name
+	MarketCap
+	IPO year
+	Inldustry
+
+
+Stock Marcket Data to Stock_prices table
+
+Filters: 
+	
+
+Fields Dropped:
+	
+
+Transformed:
+	
+
+Fields Added:
+	
+
+Fields in Stock_prices table:
+	Company_ticker: primary key
+	Date
+	High
+	Low
+	Open
+	Close
+	Volume
+	Adj_close
+
+LOAD
